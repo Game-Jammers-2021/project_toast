@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=2]
 
-[ext_resource path="res://Main Menu.gd" type="Script" id=1]
+[ext_resource path="res://MainMenu.gd" type="Script" id=1]
 
 [node name="Main Menu" type="Control"]
 rect_scale = Vector2( 1.25, 1.25 )
@@ -10,34 +10,35 @@ __meta__ = {
 }
 
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
-margin_right = 126.0
-margin_bottom = 68.0
-rect_scale = Vector2( 1.25, 1.25 )
+margin_left = -100.0
+margin_top = -37.5
+margin_right = 100.0
+margin_bottom = 37.5
+rect_pivot_offset = Vector2( 100, 37.5 )
+alignment = 1
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="Start Button" type="Button" parent="VBoxContainer"]
-margin_right = 126.0
-margin_bottom = 20.0
-rect_pivot_offset = Vector2( 62, 33 )
+margin_top = 3.0
+margin_right = 200.0
+margin_bottom = 23.0
 text = "Start"
 
 [node name="Options Button" type="Button" parent="VBoxContainer"]
-margin_top = 24.0
-margin_right = 126.0
-margin_bottom = 44.0
-rect_pivot_offset = Vector2( 62, 33 )
+margin_top = 27.0
+margin_right = 200.0
+margin_bottom = 47.0
 text = "Options"
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="Exit Button" type="Button" parent="VBoxContainer"]
-margin_top = 48.0
-margin_right = 126.0
-margin_bottom = 68.0
-rect_pivot_offset = Vector2( 62, 33 )
+margin_top = 51.0
+margin_right = 200.0
+margin_bottom = 71.0
 text = "Exit"
 __meta__ = {
 "_edit_use_anchors_": false
