@@ -11,7 +11,7 @@ config_version=4
 [application]
 
 config/name="Project_Toast"
-run/main_scene="res://RootScene.tscn"
+run/main_scene="res://MainMenu.tscn"
 config/icon="res://icon.png"
 
 [display]
