@@ -121,16 +121,22 @@ func _on_DoneButton_pressed():
 		# Check for which toast is made
 		if layers.has("Egg") and layers.has("Av"):
 			img.load("res://Resources/toasts/egg + avo.png")
+			Global.toasts_on_counter.append("EggAv")
 		elif layers.has("Egg") and layers.has("Butter"):
 			img.load("res://Resources/toasts/egg butter.png")
+			Global.toasts_on_counter.append("EggButter")
 		elif layers.has("Egg") and layers.has("Jam"):
 			img.load("res://Resources/toasts/egg + jam 1.png")
+			Global.toasts_on_counter.append("EggJam")
 		elif layers.has("Av") and layers.has("Butter"):
 			img.load("res://Resources/toasts/avocado + butter.png")
+			Global.toasts_on_counter.append("AvButter")
 		elif layers.has("Av") and layers.has("Jam"):
 			img.load("res://Resources/toasts/avocado + jam.png")
+			Global.toasts_on_counter.append("AvJam")
 		elif layers.has("Butter") and layers.has("Jam"):
 			img.load("res://Resources/toasts/jam + butter.png")
+			Global.toasts_on_counter.append("JamButter")
 		
 		# Create texture with distinct image and call overlay
 		itex.create_from_image(img)
