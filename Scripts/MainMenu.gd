@@ -2,7 +2,8 @@ extends Control
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	$"VBoxContainer/Start Button".grab_focus()
+	#$"Start Button".grab_focus()
+	pass
 
 
 # When start button is pressed, changed scene to bakery
