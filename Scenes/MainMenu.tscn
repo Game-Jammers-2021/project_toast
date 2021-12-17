@@ -1,9 +1,10 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://Resources/MainMenu/home_screen.svg" type="Texture" id=1]
 [ext_resource path="res://Scripts/MainMenu.gd" type="Script" id=2]
 [ext_resource path="res://Resources/MainMenu/play_button.svg" type="Texture" id=3]
 [ext_resource path="res://Resources/MainMenu/quit_button.svg" type="Texture" id=4]
+[ext_resource path="res://Scenes/Audio.tscn" type="PackedScene" id=5]
 
 [node name="Main Menu" type="Control"]
 anchor_left = 0.5
@@ -79,6 +80,9 @@ text = "Options"
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
+[node name="Audio" parent="." instance=ExtResource( 5 )]
+position = Vector2( 551, 393 )
 
 [connection signal="pressed" from="Start Button" to="." method="_on_Start_Button_pressed"]
 [connection signal="pressed" from="Exit Button" to="." method="_on_Exit_Button_pressed"]

@@ -1,19 +1,30 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=5 format=2]
 
-[ext_resource path="res://Resources/temp/test.png" type="Texture" id=1]
+[ext_resource path="res://Resources/Bakery/bakery_BG.png" type="Texture" id=1]
 [ext_resource path="res://Scripts/DoorArea.gd" type="Script" id=2]
+[ext_resource path="res://Resources/Bakery/bakery_open_door_-_hover_state_BG.png" type="Texture" id=3]
+[ext_resource path="res://Scenes/InsideBackeryScene.gd" type="Script" id=4]
 
 [node name="InsideBackeryScene" type="Node2D"]
+script = ExtResource( 4 )
 
 [node name="BGCanvasLayer" type="CanvasLayer" parent="."]
 
-[node name="StaticBackground" type="TextureRect" parent="BGCanvasLayer"]
-margin_right = 1205.0
-margin_bottom = 894.0
+[node name="Bakery" type="TextureRect" parent="BGCanvasLayer"]
+margin_right = 1200.0
+margin_bottom = 900.0
 mouse_filter = 2
-input_pass_on_modal_close_click = false
 texture = ExtResource( 1 )
-expand = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Bakery2" type="TextureRect" parent="BGCanvasLayer"]
+visible = false
+margin_right = 1200.0
+margin_bottom = 900.0
+mouse_filter = 2
+texture = ExtResource( 3 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -24,13 +35,13 @@ light_mask = 0
 position = Vector2( 14.765, -13.8261 )
 scale = Vector2( 1.115, 1.24275 )
 color = Color( 0.509804, 0.494118, 0.494118, 0.729412 )
-polygon = PoolVector2Array( 526.668, 229.19, 601.108, 267.009, 598.417, 415.067, 526.668, 378.052 )
+polygon = PoolVector2Array( 525.771, 233.214, 593.036, 267.01, 593.036, 411.85, 525.771, 378.054 )
 
 [node name="DoorArea" type="Area2D" parent="."]
 script = ExtResource( 2 )
 
 [node name="DoorCollisionBody" type="CollisionPolygon2D" parent="DoorArea"]
-polygon = PoolVector2Array( 599, 267, 684, 317, 680, 501, 598, 453 )
+polygon = PoolVector2Array( 599, 273, 677, 318, 676, 498, 601, 453 )
 
 [connection signal="input_event" from="DoorArea" to="DoorArea" method="_on_Area2D_input_event"]
 [connection signal="mouse_entered" from="DoorArea" to="DoorArea" method="_on_DoorArea_mouse_entered"]

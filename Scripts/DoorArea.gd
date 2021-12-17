@@ -13,10 +13,12 @@ func _on_Area2D_input_event(viewport, event, shape_idx):
 # When door area is hovered, highlight it
 func _on_DoorArea_mouse_entered():
 	get_node("../BGCanvasLayer/DoorHighlight").visible = true
+	get_node("../BGCanvasLayer/Bakery2").visible = true
 	print('Door hovered...')
 
 
 # On exit hover, hide highlight
 func _on_DoorArea_mouse_exited():
 	get_node("../BGCanvasLayer/DoorHighlight").visible = false
+	get_node("../BGCanvasLayer/Bakery2").visible = false
 	print('Door unhovered...')
