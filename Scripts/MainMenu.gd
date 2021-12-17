@@ -1,9 +1,11 @@
 extends Control
 
+var on: bool = false
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	#$"Start Button".grab_focus()
-	pass
+	on = false
 
 
 # When start button is pressed, changed scene to bakery
@@ -20,3 +22,12 @@ func _on_Start_Button_pressed():
 # When exit button is pressed, quit the game
 func _on_Exit_Button_pressed():
 	get_tree().quit()
+
+
+func _on_AudioButton_pressed():
+	if on:
+		get_node("AudioButton/AudioSlider").visible = false
+		on = false
+	else:
+		get_node("AudioButton/AudioSlider").visible = true
+		on = true

@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=2]
 
-[ext_resource path="res://Resources/temp/temp_p.png" type="Texture" id=1]
+[ext_resource path="res://Resources/Kitchen/kitchen_polished.png" type="Texture" id=1]
 
 [node name="KitchenScene" type="Node2D"]
 

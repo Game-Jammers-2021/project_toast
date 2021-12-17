@@ -4,7 +4,7 @@
 [ext_resource path="res://Scripts/MainMenu.gd" type="Script" id=2]
 [ext_resource path="res://Resources/MainMenu/play_button.svg" type="Texture" id=3]
 [ext_resource path="res://Resources/MainMenu/quit_button.svg" type="Texture" id=4]
-[ext_resource path="res://Scenes/Audio.tscn" type="PackedScene" id=5]
+[ext_resource path="res://Resources/icons/audio_icon.png" type="Texture" id=5]
 
 [node name="Main Menu" type="Control"]
 anchor_left = 0.5
@@ -81,9 +81,31 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Audio" parent="." instance=ExtResource( 5 )]
-position = Vector2( 551, 393 )
+[node name="AudioButton" type="Button" parent="."]
+margin_left = 526.0
+margin_top = 377.0
+margin_right = 574.0
+margin_bottom = 423.0
+focus_mode = 0
+enabled_focus_mode = 0
+icon = ExtResource( 5 )
+flat = true
+clip_text = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="AudioSlider" type="VSlider" parent="AudioButton"]
+visible = false
+margin_left = 14.0
+margin_top = -241.0
+margin_right = 30.0
+margin_bottom = -12.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [connection signal="pressed" from="Start Button" to="." method="_on_Start_Button_pressed"]
 [connection signal="pressed" from="Exit Button" to="." method="_on_Exit_Button_pressed"]
 [connection signal="pressed" from="VBoxContainer/Options Button" to="." method="_on_Options_Button_pressed"]
+[connection signal="pressed" from="AudioButton" to="." method="_on_AudioButton_pressed"]
