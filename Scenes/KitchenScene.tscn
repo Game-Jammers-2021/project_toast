@@ -1,4 +1,4 @@
-[gd_scene load_steps=31 format=2]
+[gd_scene load_steps=33 format=2]
 
 [ext_resource path="res://Resources/Kitchen/kitchen_bg_decorated.png" type="Texture" id=1]
 [ext_resource path="res://Audio/Crackling Fireplace Sound Effect HQ.wav" type="AudioStream" id=2]
@@ -29,6 +29,8 @@
 [ext_resource path="res://Resources/icons/hoverX.png" type="Texture" id=27]
 [ext_resource path="res://Resources/ok_button.png" type="Texture" id=28]
 [ext_resource path="res://Resources/ok_button_hover.png" type="Texture" id=29]
+[ext_resource path="res://Images/table.png" type="Texture" id=30]
+[ext_resource path="res://Images/fireplace.png" type="Texture" id=31]
 
 [sub_resource type="SpriteFrames" id=1]
 animations = [ {
@@ -48,6 +50,7 @@ __meta__ = {
 [node name="BGCanvasLayer" type="CanvasLayer" parent="."]
 
 [node name="StaticBackground" type="TextureRect" parent="BGCanvasLayer"]
+visible = false
 margin_right = 1200.0
 margin_bottom = 900.0
 mouse_filter = 2
@@ -183,11 +186,23 @@ __meta__ = {
 }
 
 [node name="Fire" type="AnimatedSprite" parent="BGCanvasLayer"]
-position = Vector2( 619, 171 )
+position = Vector2( 610, 195 )
+z_index = -1
 frames = SubResource( 1 )
 animation = "Fire"
+frame = 1
 speed_scale = 0.25
 playing = true
+
+[node name="Fireplace" type="Sprite" parent="BGCanvasLayer"]
+position = Vector2( 603, 454 )
+z_index = -2
+texture = ExtResource( 31 )
+
+[node name="Table" type="Sprite" parent="BGCanvasLayer"]
+position = Vector2( 603, 454 )
+z_index = -1
+texture = ExtResource( 30 )
 
 [node name="OnToastLayer" type="CanvasLayer" parent="."]
 
