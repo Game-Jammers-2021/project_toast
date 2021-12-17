@@ -4,7 +4,7 @@
 [ext_resource path="res://Resources/icons/image_4.png" type="Texture" id=2]
 [ext_resource path="res://Resources/icons/audio_icon.png" type="Texture" id=3]
 [ext_resource path="res://Images/Book.png" type="Texture" id=4]
-[ext_resource path="res://Images/Help Popup.png" type="Texture" id=5]
+[ext_resource path="res://Resources/popups/instructions.png" type="Texture" id=5]
 [ext_resource path="res://Images/cancel normal.png" type="Texture" id=6]
 [ext_resource path="res://Images/cancel hovered.png" type="Texture" id=7]
 

@@ -1,0 +1,363 @@
+[gd_scene load_steps=33 format=2]
+
+[ext_resource path="res://Resources/Kitchen/kitchen_bg_decorated.png" type="Texture" id=1]
+[ext_resource path="res://Audio/Crackling Fireplace Sound Effect HQ.wav" type="AudioStream" id=2]
+[ext_resource path="res://Scenes/3Dots.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Scenes/KitchenScene.gd" type="Script" id=4]
+[ext_resource path="res://Resources/ingred/avocado1.png" type="Texture" id=5]
+[ext_resource path="res://Resources/ingred/av_hovered.png" type="Texture" id=6]
+[ext_resource path="res://Resources/ingred/butter_hover.png" type="Texture" id=7]
+[ext_resource path="res://Resources/ingred/jam_hovered.png" type="Texture" id=8]
+[ext_resource path="res://Resources/ingred/egg.png" type="Texture" id=9]
+[ext_resource path="res://Resources/ingred/av.png" type="Texture" id=10]
+[ext_resource path="res://Resources/ingred/butter.png" type="Texture" id=11]
+[ext_resource path="res://Resources/ingred/jam.png" type="Texture" id=12]
+[ext_resource path="res://Resources/done_button.png" type="Texture" id=13]
+[ext_resource path="res://Resources/done_hovered.png" type="Texture" id=14]
+[ext_resource path="res://Resources/fireanimation/fire_0001_Layer-1-copy.png" type="Texture" id=15]
+[ext_resource path="res://Resources/fireanimation/fire_0002_Layer-2.png" type="Texture" id=16]
+[ext_resource path="res://Resources/fireanimation/fire_0000_Layer-2-copy.png" type="Texture" id=17]
+[ext_resource path="res://Resources/fireanimation/fire_0003_Layer-1.png" type="Texture" id=18]
+[ext_resource path="res://Resources/ingred/egg_hovered.png" type="Texture" id=19]
+[ext_resource path="res://Resources/ingred/butter_1.png" type="Texture" id=20]
+[ext_resource path="res://Resources/ingred/jam_l.png" type="Texture" id=21]
+[ext_resource path="res://Resources/temp/temp_b.png" type="Texture" id=22]
+[ext_resource path="res://Resources/toastoverlay.png" type="Texture" id=23]
+[ext_resource path="res://Resources/trash_hover.png" type="Texture" id=24]
+[ext_resource path="res://Resources/trash.png" type="Texture" id=25]
+[ext_resource path="res://Resources/icons/X.png" type="Texture" id=26]
+[ext_resource path="res://Resources/icons/hoverX.png" type="Texture" id=27]
+[ext_resource path="res://Resources/ok_button.png" type="Texture" id=28]
+[ext_resource path="res://Resources/ok_button_hover.png" type="Texture" id=29]
+[ext_resource path="res://Images/table.png" type="Texture" id=30]
+[ext_resource path="res://Images/fireplace.png" type="Texture" id=31]
+
+[sub_resource type="SpriteFrames" id=1]
+animations = [ {
+"frames": [ ExtResource( 17 ), ExtResource( 15 ), ExtResource( 16 ), ExtResource( 18 ) ],
+"loop": true,
+"name": "Fire",
+"speed": 5.0
+} ]
+
+[node name="KitchenScene" type="Node2D"]
+script = ExtResource( 4 )
+__meta__ = {
+"_edit_horizontal_guides_": [ 50.0 ],
+"_edit_vertical_guides_": [ 995.0 ]
+}
+
+[node name="BGCanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="Table" type="Sprite" parent="BGCanvasLayer"]
+position = Vector2( 599, 451 )
+texture = ExtResource( 30 )
+
+[node name="FirePlace" type="Sprite" parent="BGCanvasLayer"]
+position = Vector2( 598, 451.5 )
+scale = Vector2( 1.00333, 1.00556 )
+z_index = -1
+texture = ExtResource( 31 )
+
+[node name="StaticBackground" type="TextureRect" parent="BGCanvasLayer"]
+visible = false
+margin_right = 1200.0
+margin_bottom = 900.0
+mouse_filter = 2
+texture = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Egg" type="TextureRect" parent="BGCanvasLayer"]
+margin_left = 33.0
+margin_top = 410.0
+margin_right = 179.0
+margin_bottom = 501.0
+mouse_filter = 2
+texture = ExtResource( 9 )
+expand = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Av" type="TextureRect" parent="BGCanvasLayer"]
+margin_left = 275.0
+margin_top = 309.0
+margin_right = 413.0
+margin_bottom = 445.0
+mouse_filter = 2
+texture = ExtResource( 5 )
+expand = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Butter" type="TextureRect" parent="BGCanvasLayer"]
+margin_left = 856.0
+margin_top = 330.0
+margin_right = 1007.0
+margin_bottom = 403.0
+mouse_filter = 2
+texture = ExtResource( 20 )
+expand = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Jam" type="TextureRect" parent="BGCanvasLayer"]
+margin_left = 952.0
+margin_top = 421.0
+margin_right = 1081.0
+margin_bottom = 592.0
+mouse_filter = 2
+texture = ExtResource( 21 )
+expand = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="EggHover" type="TextureRect" parent="BGCanvasLayer"]
+visible = false
+margin_left = 32.0
+margin_top = 405.0
+margin_right = 180.0
+margin_bottom = 508.0
+mouse_filter = 2
+texture = ExtResource( 19 )
+expand = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="AvHover" type="TextureRect" parent="BGCanvasLayer"]
+visible = false
+margin_left = 288.0
+margin_top = 311.0
+margin_right = 397.0
+margin_bottom = 425.0
+mouse_filter = 2
+texture = ExtResource( 6 )
+expand = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ButterHover" type="TextureRect" parent="BGCanvasLayer"]
+visible = false
+margin_left = 853.0
+margin_top = 325.0
+margin_right = 1009.0
+margin_bottom = 404.0
+mouse_filter = 2
+texture = ExtResource( 7 )
+expand = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="JamHover" type="TextureRect" parent="BGCanvasLayer"]
+visible = false
+margin_left = 934.0
+margin_top = 388.0
+margin_right = 1074.0
+margin_bottom = 591.0
+mouse_filter = 2
+texture = ExtResource( 8 )
+expand = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Fire" type="AnimatedSprite" parent="BGCanvasLayer"]
+position = Vector2( 610, 179 )
+z_index = -1
+frames = SubResource( 1 )
+animation = "Fire"
+frame = 1
+speed_scale = 0.25
+playing = true
+
+[node name="3Dots" parent="BGCanvasLayer" instance=ExtResource( 3 )]
+visible = false
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = -138.0
+margin_top = -835.0
+margin_right = -138.0
+margin_bottom = -835.0
+
+[node name="DoneButton" type="TextureButton" parent="BGCanvasLayer"]
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+margin_left = -116.0
+margin_top = -113.0
+margin_right = 113.0
+margin_bottom = -30.0
+texture_normal = ExtResource( 13 )
+texture_hover = ExtResource( 14 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+<<<<<<< HEAD
+[node name="Fire" type="AnimatedSprite" parent="BGCanvasLayer"]
+position = Vector2( 619, 171 )
+frames = SubResource( 1 )
+animation = "Fire"
+speed_scale = 0.25
+playing = true
+
+=======
+>>>>>>> 41910936d104f6d4251dc0baec7f0dc1bab3a6b6
+[node name="OnToastLayer" type="CanvasLayer" parent="."]
+
+[node name="EggonToast" type="Sprite" parent="OnToastLayer"]
+visible = false
+position = Vector2( 600, 466 )
+scale = Vector2( 0.461021, 0.461021 )
+texture = ExtResource( 9 )
+
+[node name="AvonToast" type="Sprite" parent="OnToastLayer"]
+visible = false
+position = Vector2( 598, 456 )
+scale = Vector2( 0.375817, 0.375817 )
+texture = ExtResource( 10 )
+
+[node name="ButteronToast" type="Sprite" parent="OnToastLayer"]
+visible = false
+position = Vector2( 594, 462 )
+scale = Vector2( 0.516129, 0.516129 )
+texture = ExtResource( 11 )
+
+[node name="JamonToast" type="Sprite" parent="OnToastLayer"]
+visible = false
+position = Vector2( 598, 462 )
+scale = Vector2( 0.720472, 0.720472 )
+texture = ExtResource( 12 )
+
+[node name="TrashCanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="Trash" type="TextureButton" parent="TrashCanvasLayer"]
+margin_left = 1053.0
+margin_top = 786.0
+margin_right = 1119.0
+margin_bottom = 872.0
+texture_normal = ExtResource( 25 )
+texture_hover = ExtResource( 24 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 2 )
+volume_db = -24.471
+autoplay = true
+bus = "SFX"
+
+[node name="EggArea" type="Area2D" parent="."]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="EggArea"]
+position = Vector2( 2, 2 )
+polygon = PoolVector2Array( 36, 447, 36, 473, 55, 488, 79, 496, 108, 496, 139, 503, 173, 491, 172, 449, 152, 419, 122, 411, 84, 414, 59, 421, 45, 435 )
+
+[node name="AvArea" type="Area2D" parent="."]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="AvArea"]
+polygon = PoolVector2Array( 307, 349, 340, 334, 376, 316, 389, 316, 394, 335, 383, 362, 379, 399, 352, 418, 313, 412, 291, 385, 298, 357 )
+
+[node name="ButterArea" type="Area2D" parent="."]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="ButterArea"]
+polygon = PoolVector2Array( 854, 330, 856, 366, 871, 396, 969, 397, 1007, 394, 1004, 354, 989, 329, 979, 328, 952, 327 )
+
+[node name="JamArea" type="Area2D" parent="."]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="JamArea"]
+polygon = PoolVector2Array( 982, 423, 960, 455, 956, 566, 1002, 591, 1075, 574, 1065, 455, 1037, 417 )
+
+[node name="ToastOverlay" type="CanvasLayer" parent="."]
+
+[node name="block" type="TextureRect" parent="ToastOverlay"]
+visible = false
+modulate = Color( 0, 0, 0, 0.607843 )
+margin_right = 1200.0
+margin_bottom = 900.0
+texture = ExtResource( 22 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="overlay" type="TextureRect" parent="ToastOverlay"]
+visible = false
+margin_left = 242.0
+margin_top = 185.0
+margin_right = 977.0
+margin_bottom = 697.0
+texture = ExtResource( 23 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="toast" type="TextureRect" parent="ToastOverlay"]
+visible = false
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -105.0
+margin_top = -150.0
+margin_right = 105.0
+margin_bottom = 70.0
+expand = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="x" type="TextureButton" parent="ToastOverlay"]
+margin_left = 905.0
+margin_top = 222.0
+margin_right = 942.0
+margin_bottom = 259.0
+texture_normal = ExtResource( 26 )
+texture_hover = ExtResource( 27 )
+expand = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Ok" type="TextureButton" parent="ToastOverlay"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -114.5
+margin_top = 125.0
+margin_right = 114.5
+margin_bottom = 208.0
+texture_normal = ExtResource( 28 )
+texture_hover = ExtResource( 29 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[connection signal="pressed" from="BGCanvasLayer/DoneButton" to="." method="_on_DoneButton_pressed"]
+[connection signal="pressed" from="TrashCanvasLayer/Trash" to="." method="_on_Trash_pressed"]
+[connection signal="input_event" from="EggArea" to="." method="_on_EggArea_input_event"]
+[connection signal="mouse_entered" from="EggArea" to="." method="_on_EggArea_mouse_entered"]
+[connection signal="mouse_exited" from="EggArea" to="." method="_on_EggArea_mouse_exited"]
+[connection signal="input_event" from="AvArea" to="." method="_on_AvArea_input_event"]
+[connection signal="mouse_entered" from="AvArea" to="." method="_on_AvArea_mouse_entered"]
+[connection signal="mouse_exited" from="AvArea" to="." method="_on_AvArea_mouse_exited"]
+[connection signal="input_event" from="ButterArea" to="." method="_on_ButterArea_input_event"]
+[connection signal="mouse_entered" from="ButterArea" to="." method="_on_ButterArea_mouse_entered"]
+[connection signal="mouse_exited" from="ButterArea" to="." method="_on_ButterArea_mouse_exited"]
+[connection signal="input_event" from="JamArea" to="." method="_on_JamArea_input_event"]
+[connection signal="mouse_entered" from="JamArea" to="." method="_on_JamArea_mouse_entered"]
+[connection signal="mouse_exited" from="JamArea" to="." method="_on_JamArea_mouse_exited"]
+[connection signal="pressed" from="ToastOverlay/x" to="." method="_on_x_pressed"]
+[connection signal="pressed" from="ToastOverlay/Ok" to="." method="_on_Ok_pressed"]

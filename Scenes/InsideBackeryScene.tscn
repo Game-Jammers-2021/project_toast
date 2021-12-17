@@ -86,7 +86,7 @@ scale = Vector2( 0.420118, 0.420118 )
 z_index = 5
 frames = SubResource( 2 )
 animation = "Orange Cat"
-frame = 4
+frame = 1
 playing = true
 
 [node name="Bakery" type="TextureRect" parent="BGCanvasLayer"]
