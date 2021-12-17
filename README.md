@@ -1,3 +1,3 @@
-# project_toast
+# Toast 'Em All
 
-## A game made from Godot Engine for Studio Snowjam 2021.
+## A toasy game made from Godot Engine for Studio Snowjam 2021.
