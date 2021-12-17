@@ -31,3 +31,7 @@ func _on_AudioButton_pressed():
 	else:
 		get_node("AudioButton/AudioSlider").visible = true
 		on = true
+
+
+func _on_AudioSlider_value_changed(value):
+	AudioServer.set_bus_volume_db(AudioServer.get_bus_index("Master"),value)

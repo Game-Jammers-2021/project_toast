@@ -1,10 +1,11 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=7 format=2]
 
-[ext_resource path="res://Resources/MainMenu/home_screen.svg" type="Texture" id=1]
+[ext_resource path="res://Images/home_screen.png" type="Texture" id=1]
 [ext_resource path="res://Scripts/MainMenu.gd" type="Script" id=2]
 [ext_resource path="res://Resources/MainMenu/play_button.svg" type="Texture" id=3]
 [ext_resource path="res://Resources/MainMenu/quit_button.svg" type="Texture" id=4]
 [ext_resource path="res://Resources/icons/audio_icon.png" type="Texture" id=5]
+[ext_resource path="res://Audio/TitleBGM.wav" type="AudioStream" id=6]
 
 [node name="Main Menu" type="Control"]
 anchor_left = 0.5
@@ -95,12 +96,20 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="AudioButton"]
+stream = ExtResource( 6 )
+volume_db = -8.74
+autoplay = true
+bus = "Title"
+
 [node name="AudioSlider" type="VSlider" parent="AudioButton"]
 visible = false
 margin_left = 14.0
 margin_top = -241.0
 margin_right = 30.0
 margin_bottom = -12.0
+min_value = -80.0
+max_value = 0.0
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -109,3 +118,4 @@ __meta__ = {
 [connection signal="pressed" from="Exit Button" to="." method="_on_Exit_Button_pressed"]
 [connection signal="pressed" from="VBoxContainer/Options Button" to="." method="_on_Options_Button_pressed"]
 [connection signal="pressed" from="AudioButton" to="." method="_on_AudioButton_pressed"]
+[connection signal="value_changed" from="AudioButton/AudioSlider" to="." method="_on_AudioSlider_value_changed"]
