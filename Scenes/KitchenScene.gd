@@ -3,7 +3,6 @@ extends Node2D
 var cur_layers : int = 0
 var layers = []
 
-
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	pass # Replace with function body.
@@ -17,13 +16,14 @@ func _on_EggArea_input_event(viewport, event, shape_idx):
 		print("Egg clicked...")
 		if cur_layers < 2:
 			print("Egg added...")
+			cur_layers += 1
 			layers.append("Egg")
 			# Do stuff...
+			get_node("BGCanvasLayer/EggonToast").visible = true
 			
 		else:
 			print("Fully layered")
 		
-
 
 func _on_EggArea_mouse_entered():
 	print("Egg hovered...")
@@ -43,8 +43,10 @@ func _on_AvArea_input_event(viewport, event, shape_idx):
 		print("Av clicked...")
 		if cur_layers < 2:
 			print("Av added...")
+			cur_layers += 1
 			layers.append("Av")
 			# Do stuff...
+			get_node("BGCanvasLayer/AvonToast").visible = true
 			
 		else:
 			print("Fully layered")
@@ -67,9 +69,10 @@ func _on_ButterArea_input_event(viewport, event, shape_idx):
 		print("Butter clicked...")
 		if cur_layers < 2:
 			print("Butter added...")
+			cur_layers += 1
 			layers.append("Butter")
 			# Do stuff...
-			
+			get_node("BGCanvasLayer/ButteronToast").visible = true
 		else:
 			print("Fully layered")
 		
@@ -90,9 +93,10 @@ func _on_JamArea_input_event(viewport, event, shape_idx):
 		print("Jam clicked...")
 		if cur_layers < 2:
 			print("Jam added...")
+			cur_layers += 1
 			layers.append("Jam")
 			# Do stuff...
-			
+			get_node("BGCanvasLayer/JamonToast").visible = true
 		else:
 			print("Fully layered")
 
@@ -106,4 +110,6 @@ func _on_JamArea_mouse_exited():
 	get_node("BGCanvasLayer/JamHover").visible = false
 
 
-
+func _on_DoneButton_pressed():
+	print("Done")
+	
