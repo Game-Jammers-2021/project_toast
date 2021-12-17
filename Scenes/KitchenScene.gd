@@ -5,7 +5,8 @@ var layers = []
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	pass # Replace with function body.
+	for i in get_node("ToastOverlay").get_children():
+		i.visible = false
 
 
 ### FOR ALL INGREDIENTS:
@@ -152,5 +153,12 @@ func _on_Trash_pressed():
 func _on_x_pressed():
 	for i in get_node("ToastOverlay").get_children():
 		i.visible = false
-	get_node("ToastOverlay/toast").texture = null
-	get_node("ToastOverlay/toast").visible = true
+	for i in get_node("OnToastLayer").get_children():
+		i.visible = false
+	layers = []
+	cur_layers = 0
+	
+
+# Change back to Backery
+func _on_Ok_pressed():
+	get_tree().change_scene("res://Scenes/InsideBackeryScene.tscn")
