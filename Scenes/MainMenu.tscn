@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://Images/home_screen.png" type="Texture" id=1]
 [ext_resource path="res://Scripts/MainMenu.gd" type="Script" id=2]
@@ -6,6 +6,8 @@
 [ext_resource path="res://Resources/MainMenu/quit_button.svg" type="Texture" id=4]
 [ext_resource path="res://Resources/icons/audio_icon.png" type="Texture" id=5]
 [ext_resource path="res://Audio/TitleBGM.wav" type="AudioStream" id=6]
+[ext_resource path="res://Images/CatNormal.png" type="Texture" id=7]
+[ext_resource path="res://Images/CatHovered.png" type="Texture" id=8]
 
 [node name="Main Menu" type="Control"]
 anchor_left = 0.5
@@ -110,6 +112,19 @@ margin_right = 30.0
 margin_bottom = -12.0
 min_value = -80.0
 max_value = 0.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Cat" type="TextureButton" parent="."]
+margin_left = 6.0
+margin_top = 69.0
+margin_right = 278.0
+margin_bottom = 308.0
+rect_min_size = Vector2( 3.535, 0 )
+texture_normal = ExtResource( 7 )
+texture_hover = ExtResource( 8 )
+expand = true
 __meta__ = {
 "_edit_use_anchors_": false
 }

@@ -15,6 +15,7 @@ func _on_DoorArea_mouse_entered():
 	get_node("../BGCanvasLayer/DoorHighlight").visible = true
 	get_node("../BGCanvasLayer/Bakery2").visible = true
 	print('Door hovered...')
+	$Door.play()
 
 
 # On exit hover, hide highlight

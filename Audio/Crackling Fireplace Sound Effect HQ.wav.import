@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/Crackling Fireplace Sound Effect HQ.wav-140db665d4ab3636ac4565cbdf31a245.sample"
+
+[deps]
+
+source_file="res://Audio/Crackling Fireplace Sound Effect HQ.wav"
+dest_files=[ "res://.import/Crackling Fireplace Sound Effect HQ.wav-140db665d4ab3636ac4565cbdf31a245.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

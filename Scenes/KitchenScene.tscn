@@ -1,8 +1,14 @@
-[gd_scene load_steps=2 format=2]
+[gd_scene load_steps=4 format=2]
 
 [ext_resource path="res://Resources/Kitchen/kitchen_polished.png" type="Texture" id=1]
+[ext_resource path="res://Audio/Crackling Fireplace Sound Effect HQ.wav" type="AudioStream" id=2]
+[ext_resource path="res://Scenes/3Dots.tscn" type="PackedScene" id=3]
 
 [node name="KitchenScene" type="Node2D"]
+__meta__ = {
+"_edit_horizontal_guides_": [ 50.0 ],
+"_edit_vertical_guides_": [ 995.0 ]
+}
 
 [node name="StaticBackground" type="TextureRect" parent="."]
 margin_right = 40.0
@@ -11,3 +17,19 @@ texture = ExtResource( 1 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 2 )
+volume_db = -24.471
+autoplay = true
+bus = "SFX"
+
+[node name="3Dots" parent="." instance=ExtResource( 3 )]
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 1062.0
+margin_top = 65.0
+margin_right = 1062.0
+margin_bottom = 65.0

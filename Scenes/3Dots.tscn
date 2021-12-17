@@ -20,6 +20,10 @@ func _on_Audio_pressed():
 	else:
 		get_node(\"Audio/VSlider\").visible = true
 		on = true
+
+
+func _on_VSlider_value_changed(value):
+	AudioServer.set_bus_volume_db(AudioServer.get_bus_index(\"Master\"),value)
 "
 
 [node name="3Dots" type="Control"]
@@ -33,9 +37,9 @@ anchor_left = 1.0
 anchor_top = 0.5
 anchor_right = 1.0
 anchor_bottom = 0.5
-margin_left = -80.0
+margin_left = -72.0
 margin_top = -20.0
-margin_right = -35.0
+margin_right = -27.0
 margin_bottom = 22.0
 focus_mode = 0
 enabled_focus_mode = 0
@@ -52,9 +56,9 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-margin_left = -32.5
+margin_left = 24.0
 margin_top = -31.0
-margin_right = 32.5
+margin_right = 89.0
 margin_bottom = 31.0
 focus_mode = 0
 enabled_focus_mode = 0
@@ -67,12 +71,14 @@ __meta__ = {
 }
 
 [node name="Audio" type="Button" parent="."]
+anchor_left = 0.5
 anchor_top = 0.5
+anchor_right = 0.5
 anchor_bottom = 0.5
-margin_left = 32.0
-margin_top = -23.0
-margin_right = 80.0
-margin_bottom = 25.0
+margin_left = -24.0
+margin_top = -24.0
+margin_right = 24.0
+margin_bottom = 24.0
 focus_mode = 0
 enabled_focus_mode = 0
 icon = ExtResource( 3 )
@@ -87,9 +93,12 @@ visible = false
 margin_left = 6.0
 margin_top = 51.0
 margin_right = 41.0
-margin_bottom = 271.0
+margin_bottom = 185.0
+min_value = -80.0
+max_value = 0.0
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [connection signal="pressed" from="Audio" to="." method="_on_Audio_pressed"]
+[connection signal="value_changed" from="Audio/VSlider" to="." method="_on_VSlider_value_changed"]

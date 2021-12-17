@@ -1,13 +1,44 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=16 format=2]
 
 [ext_resource path="res://Resources/Bakery/bakery_BG.png" type="Texture" id=1]
 [ext_resource path="res://Scripts/DoorArea.gd" type="Script" id=2]
 [ext_resource path="res://Resources/Bakery/bakery_open_door_-_hover_state_BG.png" type="Texture" id=3]
+[ext_resource path="res://Audio/dooropen.wav" type="AudioStream" id=4]
 [ext_resource path="res://Scenes/3Dots.tscn" type="PackedScene" id=5]
+[ext_resource path="res://Images/Gray Cat/gray7.png" type="Texture" id=6]
+[ext_resource path="res://Images/Gray Cat/gray6.png" type="Texture" id=7]
+[ext_resource path="res://Images/Gray Cat/gray5.png" type="Texture" id=8]
+[ext_resource path="res://Images/Gray Cat/gray1.png" type="Texture" id=9]
+[ext_resource path="res://Images/Gray Cat/gray2.png" type="Texture" id=10]
+[ext_resource path="res://Images/Gray Cat/gray3.png" type="Texture" id=11]
+[ext_resource path="res://Images/Gray Cat/gray4.png" type="Texture" id=12]
+[ext_resource path="res://Images/Gray Cat/gray8.png" type="Texture" id=13]
+[ext_resource path="res://Audio/BGM2.wav" type="AudioStream" id=14]
+
+[sub_resource type="SpriteFrames" id=1]
+animations = [ {
+"frames": [ ExtResource( 9 ), ExtResource( 10 ), ExtResource( 11 ), ExtResource( 12 ), ExtResource( 8 ), ExtResource( 7 ), ExtResource( 6 ), ExtResource( 13 ) ],
+"loop": true,
+"name": "gray cat",
+"speed": 5.0
+} ]
 
 [node name="InsideBackeryScene" type="Node2D"]
+__meta__ = {
+"_edit_horizontal_guides_": [  ],
+"_edit_vertical_guides_": [  ]
+}
 
 [node name="BGCanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="Gray Cat" type="AnimatedSprite" parent="BGCanvasLayer"]
+position = Vector2( 765, 586 )
+scale = Vector2( 0.407579, 0.407579 )
+z_index = 3
+frames = SubResource( 1 )
+animation = "gray cat"
+speed_scale = 0.5
+playing = true
 
 [node name="Bakery" type="TextureRect" parent="BGCanvasLayer"]
 margin_right = 1200.0
@@ -46,6 +77,15 @@ script = ExtResource( 2 )
 
 [node name="DoorCollisionBody" type="CollisionPolygon2D" parent="DoorArea"]
 polygon = PoolVector2Array( 599, 273, 677, 318, 676, 498, 601, 453 )
+
+[node name="Door" type="AudioStreamPlayer" parent="DoorArea"]
+stream = ExtResource( 4 )
+volume_db = -28.233
+
+[node name="BGM" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 14 )
+volume_db = -34.084
+autoplay = true
 
 [connection signal="input_event" from="DoorArea" to="DoorArea" method="_on_Area2D_input_event"]
 [connection signal="mouse_entered" from="DoorArea" to="DoorArea" method="_on_DoorArea_mouse_entered"]

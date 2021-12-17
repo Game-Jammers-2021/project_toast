@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/dooropen.wav-4aba36582d5114534f598363ab32ad4c.sample"
+
+[deps]
+
+source_file="res://Audio/dooropen.wav"
+dest_files=[ "res://.import/dooropen.wav-4aba36582d5114534f598363ab32ad4c.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0
