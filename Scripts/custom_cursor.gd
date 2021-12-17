@@ -1,10 +1,8 @@
 extends Node
 
-
 # Load the custom images for the mouse cursor.
 var arrow = load("res://arrow.png")
 var beam = load("res://beam.png")
-
 
 func _ready():
 	# Changes only the arrow shape of the cursor.

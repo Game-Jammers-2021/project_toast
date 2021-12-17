@@ -18,10 +18,20 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
+[node name="DoorHighlight" type="Polygon2D" parent="BGCanvasLayer"]
+visible = false
+light_mask = 0
+position = Vector2( 14.765, -13.8261 )
+scale = Vector2( 1.115, 1.24275 )
+color = Color( 0.509804, 0.494118, 0.494118, 0.729412 )
+polygon = PoolVector2Array( 526.668, 229.19, 601.108, 267.009, 598.417, 415.067, 526.668, 378.052 )
+
 [node name="DoorArea" type="Area2D" parent="."]
 script = ExtResource( 2 )
 
 [node name="DoorCollisionBody" type="CollisionPolygon2D" parent="DoorArea"]
-polygon = PoolVector2Array( 594, 264, 684, 317, 680, 501, 598, 453 )
+polygon = PoolVector2Array( 599, 267, 684, 317, 680, 501, 598, 453 )
 
 [connection signal="input_event" from="DoorArea" to="DoorArea" method="_on_Area2D_input_event"]
+[connection signal="mouse_entered" from="DoorArea" to="DoorArea" method="_on_DoorArea_mouse_entered"]
+[connection signal="mouse_exited" from="DoorArea" to="DoorArea" method="_on_DoorArea_mouse_exited"]
