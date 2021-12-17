@@ -1,22 +1,93 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://Resources/Kitchen/kitchen_polished.png" type="Texture" id=1]
 [ext_resource path="res://Audio/Crackling Fireplace Sound Effect HQ.wav" type="AudioStream" id=2]
 [ext_resource path="res://Scenes/3Dots.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Scenes/KitchenScene.gd" type="Script" id=4]
+[ext_resource path="res://Resources/ingred/egg_hovered.png" type="Texture" id=5]
+[ext_resource path="res://Resources/ingred/av_hovered.png" type="Texture" id=6]
+[ext_resource path="res://Resources/ingred/butter_hover.png" type="Texture" id=7]
+[ext_resource path="res://Resources/ingred/jam_hovered.png" type="Texture" id=8]
 
 [node name="KitchenScene" type="Node2D"]
+script = ExtResource( 4 )
 __meta__ = {
 "_edit_horizontal_guides_": [ 50.0 ],
 "_edit_vertical_guides_": [ 995.0 ]
 }
 
-[node name="StaticBackground" type="TextureRect" parent="."]
-margin_right = 40.0
-margin_bottom = 40.0
+[node name="BGCanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="StaticBackground" type="TextureRect" parent="BGCanvasLayer"]
+margin_right = 1200.0
+margin_bottom = 900.0
+mouse_filter = 2
 texture = ExtResource( 1 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
+[node name="EggHover" type="TextureRect" parent="BGCanvasLayer"]
+visible = false
+margin_left = 32.0
+margin_top = 405.0
+margin_right = 180.0
+margin_bottom = 508.0
+mouse_filter = 2
+texture = ExtResource( 5 )
+expand = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="AvHover" type="TextureRect" parent="BGCanvasLayer"]
+visible = false
+margin_left = 288.0
+margin_top = 311.0
+margin_right = 397.0
+margin_bottom = 425.0
+mouse_filter = 2
+texture = ExtResource( 6 )
+expand = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ButterHover" type="TextureRect" parent="BGCanvasLayer"]
+visible = false
+margin_left = 853.0
+margin_top = 325.0
+margin_right = 1009.0
+margin_bottom = 404.0
+mouse_filter = 2
+texture = ExtResource( 7 )
+expand = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="JamHover" type="TextureRect" parent="BGCanvasLayer"]
+visible = false
+margin_left = 934.0
+margin_top = 388.0
+margin_right = 1074.0
+margin_bottom = 591.0
+mouse_filter = 2
+texture = ExtResource( 8 )
+expand = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="3Dots" parent="BGCanvasLayer" instance=ExtResource( 3 )]
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = -138.0
+margin_top = -835.0
+margin_right = -138.0
+margin_bottom = -835.0
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 2 )
@@ -24,12 +95,36 @@ volume_db = -24.471
 autoplay = true
 bus = "SFX"
 
-[node name="3Dots" parent="." instance=ExtResource( 3 )]
-anchor_left = 1.0
-anchor_top = 1.0
-anchor_right = 1.0
-anchor_bottom = 1.0
-margin_left = 1062.0
-margin_top = 65.0
-margin_right = 1062.0
-margin_bottom = 65.0
+[node name="EggArea" type="Area2D" parent="."]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="EggArea"]
+position = Vector2( 2, 2 )
+polygon = PoolVector2Array( 36, 447, 36, 473, 55, 488, 79, 496, 108, 496, 139, 503, 173, 491, 172, 449, 152, 419, 122, 411, 84, 414, 59, 421, 45, 435 )
+
+[node name="AvArea" type="Area2D" parent="."]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="AvArea"]
+polygon = PoolVector2Array( 307, 349, 340, 334, 376, 316, 389, 316, 394, 335, 383, 362, 379, 399, 352, 418, 313, 412, 291, 385, 298, 357 )
+
+[node name="ButterArea" type="Area2D" parent="."]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="ButterArea"]
+polygon = PoolVector2Array( 854, 330, 856, 366, 871, 396, 969, 397, 1007, 394, 1004, 354, 989, 329, 979, 328, 952, 327 )
+
+[node name="JamArea" type="Area2D" parent="."]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="JamArea"]
+polygon = PoolVector2Array( 982, 423, 960, 455, 956, 566, 1002, 591, 1075, 574, 1065, 455, 1037, 417 )
+
+[connection signal="input_event" from="EggArea" to="." method="_on_EggArea_input_event"]
+[connection signal="mouse_entered" from="EggArea" to="." method="_on_EggArea_mouse_entered"]
+[connection signal="mouse_exited" from="EggArea" to="." method="_on_EggArea_mouse_exited"]
+[connection signal="input_event" from="AvArea" to="." method="_on_AvArea_input_event"]
+[connection signal="mouse_entered" from="AvArea" to="." method="_on_AvArea_mouse_entered"]
+[connection signal="mouse_exited" from="AvArea" to="." method="_on_AvArea_mouse_exited"]
+[connection signal="input_event" from="ButterArea" to="." method="_on_ButterArea_input_event"]
+[connection signal="mouse_entered" from="ButterArea" to="." method="_on_ButterArea_mouse_entered"]
+[connection signal="mouse_exited" from="ButterArea" to="." method="_on_ButterArea_mouse_exited"]
+[connection signal="input_event" from="JamArea" to="." method="_on_JamArea_input_event"]
+[connection signal="mouse_entered" from="JamArea" to="." method="_on_JamArea_mouse_entered"]
+[connection signal="mouse_exited" from="JamArea" to="." method="_on_JamArea_mouse_exited"]
