@@ -186,7 +186,6 @@ __meta__ = {
 position = Vector2( 619, 171 )
 frames = SubResource( 1 )
 animation = "Fire"
-frame = 2
 speed_scale = 0.25
 playing = true
 
