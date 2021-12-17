@@ -1,0 +1,27 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://Resources/temp/test.png" type="Texture" id=1]
+[ext_resource path="res://Scripts/DoorArea.gd" type="Script" id=2]
+
+[node name="InsideBackeryScene" type="Node2D"]
+
+[node name="BGCanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="StaticBackground" type="TextureRect" parent="BGCanvasLayer"]
+margin_right = 1205.0
+margin_bottom = 894.0
+mouse_filter = 2
+input_pass_on_modal_close_click = false
+texture = ExtResource( 1 )
+expand = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="DoorArea" type="Area2D" parent="."]
+script = ExtResource( 2 )
+
+[node name="DoorCollisionBody" type="CollisionPolygon2D" parent="DoorArea"]
+polygon = PoolVector2Array( 594, 264, 684, 317, 680, 501, 598, 453 )
+
+[connection signal="input_event" from="DoorArea" to="DoorArea" method="_on_Area2D_input_event"]

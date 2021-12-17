@@ -6,7 +6,7 @@ func _ready():
 
 
 func _on_Start_Button_pressed():
-	get_tree().change_scene("res://InsideBackeryScene.tscn")
+	get_tree().change_scene("res://Scenes/InsideBackeryScene.tscn")
 
 
 #func _on_Options_Button_pressed():
