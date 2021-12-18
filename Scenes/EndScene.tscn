@@ -1,10 +1,23 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=19 format=2]
 
 [ext_resource path="res://Images/End Scene BG.png" type="Texture" id=1]
 [ext_resource path="res://Scenes/EndScene.gd" type="Script" id=2]
 [ext_resource path="res://Images/play again.png" type="Texture" id=3]
 [ext_resource path="res://Images/quit.png" type="Texture" id=4]
 [ext_resource path="res://Images/play again hovered.png" type="Texture" id=5]
+[ext_resource path="res://Resources/toasts/jam + butter.png" type="Texture" id=6]
+[ext_resource path="res://Resources/toasts/avocado + jam.png" type="Texture" id=7]
+[ext_resource path="res://Resources/toasts/avocado + butter.png" type="Texture" id=8]
+[ext_resource path="res://Resources/toasts/egg butter.png" type="Texture" id=9]
+[ext_resource path="res://Resources/toasts/egg + jam 1.png" type="Texture" id=10]
+[ext_resource path="res://Resources/toasts/egg + avo.png" type="Texture" id=11]
+[ext_resource path="res://Images/layer -1.png" type="Texture" id=12]
+[ext_resource path="res://Images/layer 000.png" type="Texture" id=13]
+[ext_resource path="res://Images/layer 0.png" type="Texture" id=14]
+[ext_resource path="res://Images/layer-11.png" type="Texture" id=15]
+[ext_resource path="res://Images/layer 00.png" type="Texture" id=16]
+[ext_resource path="res://Resources/icons/audio_icon.png" type="Texture" id=17]
+[ext_resource path="res://Audio/End Screen.mp3" type="AudioStream" id=18]
 
 [node name="EndScene" type="Control"]
 anchor_left = 0.5
@@ -25,6 +38,7 @@ margin_left = -600.0
 margin_top = -453.0
 margin_right = 600.0
 margin_bottom = 447.0
+rect_pivot_offset = Vector2( 848, 573 )
 texture = ExtResource( 1 )
 __meta__ = {
 "_edit_use_anchors_": false
@@ -51,6 +65,144 @@ icon = ExtResource( 4 )
 flat = true
 clip_text = true
 expand_icon = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ToastsOnCounter" type="CanvasLayer" parent="."]
+
+[node name="EggAvToast" type="TextureRect" parent="ToastsOnCounter"]
+visible = false
+margin_left = 934.0
+margin_top = 565.0
+margin_right = 999.0
+margin_bottom = 630.0
+rect_rotation = 12.5
+texture = ExtResource( 11 )
+expand = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="EggJamToast" type="TextureRect" parent="ToastsOnCounter"]
+visible = false
+margin_left = 1101.0
+margin_top = 570.0
+margin_right = 1156.0
+margin_bottom = 624.0
+rect_rotation = 12.5
+texture = ExtResource( 10 )
+expand = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="EggButterToast" type="TextureRect" parent="ToastsOnCounter"]
+visible = false
+margin_left = 1152.0
+margin_top = 568.0
+margin_right = 1209.0
+margin_bottom = 624.0
+rect_rotation = 12.5
+texture = ExtResource( 9 )
+expand = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="AvButterToast" type="TextureRect" parent="ToastsOnCounter"]
+visible = false
+margin_left = 992.0
+margin_top = 568.0
+margin_right = 1050.0
+margin_bottom = 626.0
+rect_rotation = 12.5
+texture = ExtResource( 8 )
+expand = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="AvJamToast" type="TextureRect" parent="ToastsOnCounter"]
+visible = false
+margin_left = 1048.0
+margin_top = 569.0
+margin_right = 1104.0
+margin_bottom = 626.0
+rect_rotation = 12.5
+texture = ExtResource( 7 )
+expand = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="JamButterToast" type="TextureRect" parent="ToastsOnCounter"]
+visible = false
+margin_left = 845.0
+margin_top = 564.0
+margin_right = 910.0
+margin_bottom = 629.0
+rect_rotation = 12.5
+texture = ExtResource( 6 )
+expand = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Background" type="CanvasLayer" parent="."]
+
+[node name="Banner" type="Sprite" parent="Background"]
+position = Vector2( 601, 101 )
+texture = ExtResource( 14 )
+
+[node name="White" type="Sprite" parent="Background"]
+position = Vector2( 862, 725 )
+texture = ExtResource( 16 )
+
+[node name="Window" type="Sprite" parent="Background"]
+position = Vector2( 826, 359 )
+z_index = -1
+texture = ExtResource( 13 )
+
+[node name="Counter" type="Sprite" parent="Background"]
+position = Vector2( 1008, 673 )
+z_index = -2
+texture = ExtResource( 15 )
+
+[node name="Cat" type="Sprite" parent="Background"]
+position = Vector2( 697, 591 )
+z_index = -2
+texture = ExtResource( 12 )
+
+[node name="Sprite6" type="Sprite" parent="Background"]
+
+[node name="AudioButton" type="Button" parent="."]
+margin_left = 526.0
+margin_top = 377.0
+margin_right = 574.0
+margin_bottom = 423.0
+focus_mode = 0
+enabled_focus_mode = 0
+icon = ExtResource( 17 )
+flat = true
+clip_text = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="AudioButton"]
+stream = ExtResource( 18 )
+volume_db = -33.26
+bus = "Title"
+
+[node name="AudioSlider" type="VSlider" parent="AudioButton"]
+visible = false
+margin_left = 14.0
+margin_top = -241.0
+margin_right = 30.0
+margin_bottom = -12.0
+min_value = -80.0
+max_value = 0.0
 __meta__ = {
 "_edit_use_anchors_": false
 }

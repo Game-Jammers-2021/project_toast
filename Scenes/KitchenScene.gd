@@ -112,7 +112,7 @@ func _on_JamArea_mouse_exited():
 # When Done, check for which toast is made and 
 # load the toast in the overlay.
 func _on_DoneButton_pressed():
-	if cur_layers != 0:
+	if cur_layers != 0 and cur_layers != 1 :
 		print("Done")
 		# Create new Image and texture
 		var img = Image.new()
@@ -167,4 +167,8 @@ func _on_x_pressed():
 
 # Change back to Backery
 func _on_Ok_pressed():
+	get_tree().change_scene("res://Scenes/InsideBackeryScene.tscn")
+
+# Change back to Backery
+func _on_BackButton_pressed():
 	get_tree().change_scene("res://Scenes/InsideBackeryScene.tscn")

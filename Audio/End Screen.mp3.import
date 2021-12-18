@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/End Screen.mp3-d3f88bf23d067ce783e5ae9ef5141980.mp3str"
+
+[deps]
+
+source_file="res://Audio/End Screen.mp3"
+dest_files=[ "res://.import/End Screen.mp3-d3f88bf23d067ce783e5ae9ef5141980.mp3str" ]
+
+[params]
+
+loop=true
+loop_offset=0
