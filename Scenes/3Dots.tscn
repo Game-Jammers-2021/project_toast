@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=23 format=2]
 
 [ext_resource path="res://Resources/icons/help.png" type="Texture" id=1]
 [ext_resource path="res://Resources/icons/image_4.png" type="Texture" id=2]
@@ -7,15 +7,36 @@
 [ext_resource path="res://Resources/popups/instructions.png" type="Texture" id=5]
 [ext_resource path="res://Images/cancel normal.png" type="Texture" id=6]
 [ext_resource path="res://Images/cancel hovered.png" type="Texture" id=7]
+[ext_resource path="res://Resources/journalpages/trendsetter_1.png" type="Texture" id=8]
+[ext_resource path="res://Resources/journalpages/icarus.png" type="Texture" id=9]
+[ext_resource path="res://Resources/journalpages/hangover.png" type="Texture" id=10]
+[ext_resource path="res://Resources/journalpages/decadence.png" type="Texture" id=11]
+[ext_resource path="res://Resources/journalpages/first_impressions.png" type="Texture" id=12]
+[ext_resource path="res://Resources/journalpages/sweet_and_savory.png" type="Texture" id=13]
+[ext_resource path="res://Resources/Arrow_21.png" type="Texture" id=14]
+[ext_resource path="res://Resources/Arrow_20.png" type="Texture" id=15]
+[ext_resource path="res://Resources/toast1s/trendsetter.png" type="Texture" id=16]
+[ext_resource path="res://Resources/toast1s/icarus.png" type="Texture" id=17]
+[ext_resource path="res://Resources/toast1s/hangover.png" type="Texture" id=18]
+[ext_resource path="res://Resources/toast1s/first impressions.png" type="Texture" id=19]
+[ext_resource path="res://Resources/toast1s/sweet + savory.png" type="Texture" id=20]
+[ext_resource path="res://Resources/toast1s/decadence.png" type="Texture" id=21]
 
 [sub_resource type="GDScript" id=1]
 script/source = "extends Control
 
 var on: bool = false
-
+var unlocked_toasts = Global.toasts_on_counter
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	on = false
+	for i in get_node(\"HelpButton\").get_children():
+		i.visible = false
+	for i in get_node(\"JournalButton\").get_children():
+		i.visible = false
+	for i in get_node(\"JournalPages\").get_children():
+		i.visible = false
+	
 
 func _on_Audio_pressed():
 	if on:
@@ -25,35 +46,88 @@ func _on_Audio_pressed():
 		get_node(\"Audio/VSlider\").visible = true
 		on = true
 
-
 func _on_VSlider_value_changed(value):
 	AudioServer.set_bus_volume_db(AudioServer.get_bus_index(\"Master\"),value)
 
 
-
-
 func _on_Help_pressed():
-	get_node(\"HelpButton/Instructions\").visible = true 
-	get_node(\"HelpButton/Cancel\").visible = true 
+	for i in get_node(\"HelpButton\").get_children():
+		i.visible = true
 	
 	
-
 func _on_Cancel_pressed():
-	get_node(\"HelpButton/Instructions\").visible = false
-	get_node(\"HelpButton/Cancel\").visible = false
-
-
-
-
-func _on_Cancel2_pressed():
-	get_node(\"JournalButton/Journal\").visible = false
-	get_node(\"JournalButton/Cancel2\").visible = false
+	for i in get_node(\"HelpButton\").get_children():
+		i.visible = false
 
 
 func _on_Journal_pressed():
-	get_node(\"JournalButton/Journal\").visible = true 
-	get_node(\"JournalButton/Cancel2\").visible = true 
+	for i in get_node(\"JournalButton\").get_children():
+		i.visible = false
+	for i in get_node(\"JournalPages\").get_children():
+		i.visible = false
+	get_node(\"JournalButton/JournalBG\").visible = true
+	get_node(\"cancel_and_back/Cancel2\").visible = true
+	get_node(\"cancel_and_back/Back\").visible = false
+	if unlocked_toasts.has(\"EggAv\"):
+		get_node(\"JournalPages/trendsetter_button\").visible = true
+	if unlocked_toasts.has(\"EggJam\"):
+		get_node(\"JournalPages/first_impressions_button\").visible = true
+	if unlocked_toasts.has(\"EggButter\"):
+		get_node(\"JournalPages/icarus_button\").visible = true
+	if unlocked_toasts.has(\"AvButter\"):
+		get_node(\"JournalPages/decadence_button\").visible = true
+	if unlocked_toasts.has(\"AvJam\"):
+		get_node(\"JournalPages/sweet_and_savory_button\").visible = true
+	if unlocked_toasts.has(\"JamButter\"):
+		get_node(\"JournalPages/hangover_button\").visible = true
 	
+func _on_Cancel2_pressed():
+	for i in get_node(\"JournalButton\").get_children():
+		i.visible = false
+	for i in get_node(\"JournalPages\").get_children():
+		i.visible = false
+	get_node(\"cancel_and_back/Cancel2\").visible = false
+	get_node(\"cancel_and_back/Back\").visible = false
+
+
+func _on_Back_pressed():
+	_on_Journal_pressed()
+
+
+func _on_trendsetter_button_pressed():
+	if unlocked_toasts.has(\"EggAv\"):
+		get_node(\"JournalPages/trendsetter_1\").visible = true
+		get_node(\"cancel_and_back/Back\").visible = true
+
+
+func _on_icarus_button_pressed():
+	if unlocked_toasts.has(\"EggButter\"):
+		get_node(\"JournalPages/icarus\").visible = true
+		get_node(\"cancel_and_back/Back\").visible = true
+
+
+func _on_hangover_button_pressed():
+	if unlocked_toasts.has(\"JamButter\"):
+		get_node(\"JournalPages/hangover\").visible = true
+		get_node(\"cancel_and_back/Back\").visible = true
+
+
+func _on_decadence_button_pressed():
+	if unlocked_toasts.has(\"AvButter\"):
+		get_node(\"JournalPages/decadence\").visible = true
+		get_node(\"cancel_and_back/Back\").visible = true
+
+
+func _on_first_impressions_button_pressed():
+	if unlocked_toasts.has(\"EggJam\"):
+		get_node(\"JournalPages/first_impressions\").visible = true
+		get_node(\"cancel_and_back/Back\").visible = true
+
+
+func _on_sweet_and_savory_button_pressed():
+	if unlocked_toasts.has(\"AvJam\"):
+		get_node(\"JournalPages/sweet_and_savory\").visible = true
+		get_node(\"cancel_and_back/Back\").visible = true
 "
 
 [node name="3Dots" type="Control"]
@@ -167,18 +241,159 @@ __meta__ = {
 
 [node name="JournalButton" type="CanvasLayer" parent="."]
 
-[node name="Journal" type="TextureRect" parent="JournalButton"]
-visible = false
-margin_left = 102.0
+[node name="JournalBG" type="TextureRect" parent="JournalButton"]
+margin_left = 100.0
 margin_top = 121.0
-margin_right = 1126.0
+margin_right = 1124.0
 margin_bottom = 788.0
 texture = ExtResource( 4 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Cancel2" type="TextureButton" parent="JournalButton"]
+[node name="JournalPages" type="CanvasLayer" parent="."]
+
+[node name="trendsetter_button" type="TextureButton" parent="JournalPages"]
+visible = false
+margin_left = 695.0
+margin_top = 220.0
+margin_right = 840.0
+margin_bottom = 365.0
+texture_normal = ExtResource( 16 )
+expand = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="icarus_button" type="TextureButton" parent="JournalPages"]
+visible = false
+margin_left = 860.0
+margin_top = 220.0
+margin_right = 1005.0
+margin_bottom = 365.0
+texture_normal = ExtResource( 17 )
+expand = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="hangover_button" type="TextureButton" parent="JournalPages"]
+visible = false
+margin_left = 695.0
+margin_top = 385.0
+margin_right = 840.0
+margin_bottom = 530.0
+texture_normal = ExtResource( 18 )
+expand = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="decadence_button" type="TextureButton" parent="JournalPages"]
+visible = false
+margin_left = 860.0
+margin_top = 385.0
+margin_right = 1005.0
+margin_bottom = 530.0
+texture_normal = ExtResource( 21 )
+expand = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="first_impressions_button" type="TextureButton" parent="JournalPages"]
+visible = false
+margin_left = 695.0
+margin_top = 545.0
+margin_right = 840.0
+margin_bottom = 690.0
+texture_normal = ExtResource( 19 )
+expand = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="sweet_and_savory_button" type="TextureButton" parent="JournalPages"]
+visible = false
+margin_left = 860.0
+margin_top = 545.0
+margin_right = 1005.0
+margin_bottom = 690.0
+texture_normal = ExtResource( 20 )
+expand = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="trendsetter_1" type="TextureRect" parent="JournalPages"]
+visible = false
+margin_left = 100.0
+margin_top = 121.0
+margin_right = 1124.0
+margin_bottom = 788.0
+texture = ExtResource( 8 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="icarus" type="TextureRect" parent="JournalPages"]
+visible = false
+margin_left = 100.0
+margin_top = 121.0
+margin_right = 1124.0
+margin_bottom = 788.0
+texture = ExtResource( 9 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="hangover" type="TextureRect" parent="JournalPages"]
+visible = false
+margin_left = 100.0
+margin_top = 121.0
+margin_right = 1124.0
+margin_bottom = 788.0
+texture = ExtResource( 10 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="decadence" type="TextureRect" parent="JournalPages"]
+visible = false
+margin_left = 100.0
+margin_top = 121.0
+margin_right = 1124.0
+margin_bottom = 788.0
+texture = ExtResource( 11 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="first_impressions" type="TextureRect" parent="JournalPages"]
+visible = false
+margin_left = 100.0
+margin_top = 121.0
+margin_right = 1124.0
+margin_bottom = 788.0
+texture = ExtResource( 12 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="sweet_and_savory" type="TextureRect" parent="JournalPages"]
+visible = false
+margin_left = 100.0
+margin_top = 121.0
+margin_right = 1124.0
+margin_bottom = 788.0
+texture = ExtResource( 13 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="cancel_and_back" type="CanvasLayer" parent="."]
+
+[node name="Cancel2" type="TextureButton" parent="cancel_and_back"]
 visible = false
 margin_left = 1026.0
 margin_top = 173.0
@@ -190,9 +405,33 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
+[node name="Back" type="TextureButton" parent="cancel_and_back"]
+visible = false
+margin_left = 105.0
+margin_top = 744.0
+margin_right = 178.0
+margin_bottom = 784.0
+texture_normal = ExtResource( 15 )
+texture_hover = ExtResource( 14 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
 [connection signal="pressed" from="Journal" to="." method="_on_Journal_pressed"]
 [connection signal="pressed" from="Audio" to="." method="_on_Audio_pressed"]
 [connection signal="value_changed" from="Audio/VSlider" to="." method="_on_VSlider_value_changed"]
 [connection signal="pressed" from="Help" to="." method="_on_Help_pressed"]
 [connection signal="pressed" from="HelpButton/Cancel" to="." method="_on_Cancel_pressed"]
-[connection signal="pressed" from="JournalButton/Cancel2" to="." method="_on_Cancel2_pressed"]
+[connection signal="pressed" from="JournalPages/trendsetter_button" to="." method="_on_trendsetter_button_pressed"]
+[connection signal="pressed" from="JournalPages/icarus_button" to="." method="_on_icarus_button_pressed"]
+[connection signal="pressed" from="JournalPages/icarus_button" to="." method="_on_trendsetter_button_pressed"]
+[connection signal="pressed" from="JournalPages/hangover_button" to="." method="_on_hangover_button_pressed"]
+[connection signal="pressed" from="JournalPages/hangover_button" to="." method="_on_trendsetter_button_pressed"]
+[connection signal="pressed" from="JournalPages/decadence_button" to="." method="_on_trendsetter_button_pressed"]
+[connection signal="pressed" from="JournalPages/decadence_button" to="." method="_on_decadence_button_pressed"]
+[connection signal="pressed" from="JournalPages/first_impressions_button" to="." method="_on_trendsetter_button_pressed"]
+[connection signal="pressed" from="JournalPages/first_impressions_button" to="." method="_on_first_impressions_button_pressed"]
+[connection signal="pressed" from="JournalPages/sweet_and_savory_button" to="." method="_on_trendsetter_button_pressed"]
+[connection signal="pressed" from="JournalPages/sweet_and_savory_button" to="." method="_on_sweet_and_savory_button_pressed"]
+[connection signal="pressed" from="cancel_and_back/Cancel2" to="." method="_on_Cancel2_pressed"]
+[connection signal="pressed" from="cancel_and_back/Back" to="." method="_on_Back_pressed"]
